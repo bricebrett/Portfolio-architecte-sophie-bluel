@@ -3,6 +3,7 @@
  * */ 
 export const addWorks = (works) => {
     const worksContainer = document.querySelector('.gallery');
+    worksContainer.innerHTML = '';
     works.forEach( work => {
         const workElement = document.createElement('div');
         workElement.classList.add('work');
