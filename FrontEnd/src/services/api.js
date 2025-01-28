@@ -15,6 +15,29 @@ const fetchData = async (endpoint) => {
         throw error;
     }
 };
-
 export const getCategories = () => fetchData('categories');
 export const getWorks = () => fetchData('works');
+
+/**
+ * Function Login user
+ */
+export const loginUser = async (email, password) => {
+    const url = `${API_BASE_URL}/users/login`;
+    const data = { email, password };
+    try {
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        });
+        if (!response.ok) {
+            throw new Error(`Response status: ${response.status}`);
+        }
+        const json = await response.json();
+        console.log(json);
+        return json;
+    } catch (error) {
+        console.error(error.message);
+        throw error;
+    }
+}
