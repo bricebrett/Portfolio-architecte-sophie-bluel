@@ -2,7 +2,7 @@ import { initializeLogin } from './services/login.js';
 import { addCategories } from './components/categories.js';
 import { getCategories, getWorks } from './services/api.js';
 import { addWorks } from './components/works.js';
-import { filterWorksByCategory } from './components/filters.js';
+import { initializeFilters } from './components/filters.js';
 
 /**
  * Function handle events
@@ -16,7 +16,7 @@ const initializeEvents = (works) => {
         });
     });
 
-    const allButton = document.getElementById("btnTous");
+    const allButton = document.getElementById("btnAll");
     if (allButton) {
         allButton.addEventListener("click", () => {
             addWorks(works);
@@ -42,7 +42,7 @@ const initializeApp = async () => {
         if (worksContainer) {
             const works = await getWorks();
             addWorks(works);
-            initializeEvents(works);
+            initializeFilters(works);
         }
     } catch (error) {
         console.error("Error initializing app:", error);

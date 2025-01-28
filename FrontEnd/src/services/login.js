@@ -1,13 +1,14 @@
+import { API_ENDPOINTS } from './endpoints.js';
+
 const API_BASE_URL = "http://localhost:5678/api";
 
 /**
  * Function Login user
  */
 export const loginUser = async (email, password) => {
-    const url = `${API_BASE_URL}/users/login`;
     const data = { email, password };
     try {
-        const response = await fetch(url, {
+        const response = await fetch(API_ENDPOINTS.LOGIN, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)
