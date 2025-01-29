@@ -3,6 +3,7 @@ import { addCategories } from './components/categories.js';
 import { getCategories, getWorks } from './services/api.js';
 import { addWorks } from './components/works.js';
 import { initializeFilters } from './components/filters.js';
+import { initializeAdminMode } from './services/admin.js'; // Import de la fonction admin
 
 /**
  * Function handle events
@@ -33,6 +34,10 @@ const initializeApp = async () => {
             initializeLogin();
             return;
         }
+
+        // Initialize admin mode visibility
+        initializeAdminMode();
+
         const categoriesContainer = document.getElementById("categories");
         if (categoriesContainer) {
             const categories = await getCategories();
@@ -50,4 +55,3 @@ const initializeApp = async () => {
 };
 
 initializeApp();
-

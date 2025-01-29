@@ -42,6 +42,7 @@ export const initializeLogin = () => {
 
                 if (response.token) {
                     localStorage.setItem("authToken", response.token);
+                    sessionStorage.setItem("admin", "true"); // Définir le mode admin après connexion
                     window.location.href = "../../index.html";
                 } else {
                     alert("Connexion réussie, mais aucun token reçu.");

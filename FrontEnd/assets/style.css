@@ -127,10 +127,6 @@ a {
 #introduction p {
 	margin-bottom: 0.5em;
 }
-#portfolio h2 {
-	text-align: center;
-	margin-bottom: 1em;
-}
 
 /**** FILTERS BUTTON ****/
 
@@ -207,7 +203,6 @@ margin: auto;
 #login {
 	width: 40%;
 	margin: auto;
-	padding: 120px 0px;
 }
 #login > * {
 	text-align: center;
@@ -237,13 +232,28 @@ margin: auto;
 	text-align: center;
 }
 
-#login a {
-	border-bottom: black 1px solid;
-}
-
 .error {
 	text-align: center;
 	margin-top: 30px;
+}
+
+#adminMode {
+	display: none;
+	align-items: center;
+	cursor: pointer;
+}
+
+.myproject {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 12em;
+	margin-bottom: 8em;
+	gap: 30px;
+}
+
+.btn-modal {
+	padding: 0px 8px;
 }
 
 input[type="submit"]{
