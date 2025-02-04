@@ -3,7 +3,8 @@ import { addCategories } from './components/categories.js';
 import { getCategories, getWorks } from './services/api.js';
 import { addWorks } from './components/works.js';
 import { initializeFilters } from './components/filters.js';
-import { initializeAdminMode } from './services/admin.js'; // Import de la fonction admin
+import { initializeAdminMode } from './services/admin.js';
+import { initializeModal } from './components/modal.js';
 
 /**
  * Function handle events
@@ -17,7 +18,7 @@ const initializeEvents = (works) => {
         });
     });
 
-    const allButton = document.getElementById("btnAll");
+    const allButton = document.querySelector("#btnAll");
     if (allButton) {
         allButton.addEventListener("click", () => {
             addWorks(works);
@@ -34,24 +35,26 @@ const initializeApp = async () => {
             initializeLogin();
             return;
         }
-
-        // Initialize admin mode visibility
         initializeAdminMode();
 
-        const categoriesContainer = document.getElementById("categories");
-        if (categoriesContainer) {
-            const categories = await getCategories();
-            addCategories(categories);
-        }
-        const worksContainer = document.querySelector("#gallery");
-        if (worksContainer) {
-            const works = await getWorks();
-            addWorks(works);
-            initializeFilters(works);
+        const categories = await getCategories();
+        addCategories(categories);
+
+        const works = await getWorks();
+        addWorks(works);
+        initializeFilters(works);
+
+        // Initialize modal
+        const openModalButton = document.querySelector("#openModal");
+        if (openModalButton) {
+            openModalButton.addEventListener("click", openModal);
         }
     } catch (error) {
         console.error("Error initializing app:", error);
     }
 };
 
-initializeApp();
+document.addEventListener("DOMContentLoaded", () => {
+    initializeApp();
+    initializeModal();
+});
