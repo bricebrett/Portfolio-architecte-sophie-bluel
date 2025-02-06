@@ -25,6 +25,34 @@ export const fetchData = async (endpoint, method, data) => {
     }
 };
 
+export const deleteWork = async (workId) => {
+    const token = localStorage.getItem("authToken");
+    if (!token) throw new Error("Non autorisé");
+
+    try {
+        const response = await fetch(API_ENDPOINTS.DELETE_WORK(workId), {
+            method: "DELETE",
+            headers: {
+                "Authorization": `Bearer ${token}`,
+                "Content-Type": "application/json"
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error(`Échec de la suppression (Status: ${response.status})`);
+        }
+
+        if (response.status === 204) {
+            return {};
+        }
+
+        return await response.json(); 
+    } catch (error) {
+        console.error("Erreur lors de la suppression :", error);
+        throw error;
+    }
+};
+
 export const loginUser = (data) => fetchData('LOGIN', 'POST', data);
 export const getCategories = () => fetchData('CATEGORIES');
 export const getWorks = () => fetchData('WORKS');

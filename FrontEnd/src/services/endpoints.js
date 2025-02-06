@@ -4,5 +4,5 @@ export const API_ENDPOINTS = {
     LOGIN: `${API_BASE_URL}/users/login`,
     CATEGORIES: `${API_BASE_URL}/categories`,
     WORKS: `${API_BASE_URL}/works`,
-
+    DELETE_WORK: (id) => `${API_BASE_URL}/works/${id}`,
 };

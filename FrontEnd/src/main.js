@@ -44,7 +44,6 @@ const initializeApp = async () => {
         addWorks(works);
         initializeFilters(works);
 
-        // Initialize modal
         const openModalButton = document.querySelector("#openModal");
         if (openModalButton) {
             openModalButton.addEventListener("click", openModal);

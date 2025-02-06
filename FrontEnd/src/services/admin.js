@@ -4,7 +4,7 @@
 export const initializeAdminMode = () => {
     const isAdmin = sessionStorage.getItem("admin") === "true";
     const categories = document.getElementById("categories");
-    const modifyBtn = document.getElementById("modifyBtn");
+    const modifyBtn = document.getElementById("modify-btn");
     const loginNavItem = document.getElementById("login");
 
     if (isAdmin) {

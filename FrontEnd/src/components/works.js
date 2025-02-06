@@ -18,3 +18,20 @@ export const addWorks = (works) => {
         worksContainer.appendChild(workElement);
     });
 }
+
+export const removeWorkFromDOM = (workId) => {
+    const workElement = document.querySelector(`#gallery [data-id="${workId}"]`);
+    if (workElement) {
+        workElement.remove();
+    }
+
+    const modalElement = document.querySelector(`#modal-gallery .modal-work-container[data-id="${workId}"]`);
+    if (modalElement) {
+        modalElement.remove();
+    }
+};
+
+
+
+
+
