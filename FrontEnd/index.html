@@ -47,6 +47,32 @@
 			</div>
 			</div>
 		</section>
+
+		<section id="modalAdd" class="modal" aria-modal="false" role="dialog" style="display: none;">
+			<div id="modal-content2" class="modal-content">
+				<i class="fa-solid fa-arrow-left js-modal-back"></i>
+				<i class="fa-solid fa-xmark js-modal-close close-icon"></i>
+				<h3>Ajout photo</h3>
+				<div class="upload-zone">
+					<i class="fa-regular fa-image"></i>
+					<label for="file-upload" class="file-label">
+						<input type="file" id="file-upload" accept="image/png, image/jpeg">
+						<span>+ Ajouter photo</span>
+					</label>
+					<p>jpg, png : 4mo max</p>
+				</div>
+				<div class="modalAdd">
+					<label for="title" id="title">Titre</label>
+					<input type="text" id="titleContent">
+				</div>
+				<div class="modalAdd">
+					<label for="category" id="category">Catégorie</label>
+					<select id="categoryContent"></select>
+				</div>
+				<div class="underline"></div>
+				<button type="submit" id="submit-photo">Valider</button>
+			</div>
+		</section>
 	</div>
 	<section id="portfolio">
 		<div class="myproject">
