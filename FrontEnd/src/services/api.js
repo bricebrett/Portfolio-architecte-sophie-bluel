@@ -27,13 +27,18 @@ export const fetchData = async (endpoint, method, data) => {
 
 export const deleteWork = async (workId) => {
     const token = localStorage.getItem("authToken");
-    if (!token) throw new Error("Non autorisé");
+
+    if (!token) {
+        console.error("Erreur : Aucun token trouvé.");
+        alert("Vous devez être connecté pour supprimer un projet.");
+        return;
+    }
 
     try {
-        const response = await fetch(API_ENDPOINTS.DELETE_WORK(workId), {
+        const response = await fetch(`${API_ENDPOINTS.WORKS}/${workId}`, {
             method: "DELETE",
             headers: {
-                "Authorization": `Bearer ${token}`,
+                "Authorization": `Bearer ${token}`, // Vérifier si le token est bien envoyé
                 "Content-Type": "application/json"
             }
         });
@@ -42,11 +47,7 @@ export const deleteWork = async (workId) => {
             throw new Error(`Échec de la suppression (Status: ${response.status})`);
         }
 
-        if (response.status === 204) {
-            return {};
-        }
-
-        return await response.json(); 
+        return response.status === 204 ? {} : await response.json();
     } catch (error) {
         console.error("Erreur lors de la suppression :", error);
         throw error;
