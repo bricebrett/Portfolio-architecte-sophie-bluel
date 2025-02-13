@@ -1,4 +1,4 @@
-import { getWorks, deleteWork } from "../services/api.js";
+import { getWorks, deleteWork, getCategories } from "../services/api.js";
 import { removeWorkFromDOM } from "../components/works.js";
 
 export const initializeModal = async () => {
@@ -29,9 +29,32 @@ export const initializeModal = async () => {
         }
     };
 
+    const categorySelect = async () => {
+        const categorySelect = document.querySelector("#categoryContent");
+    
+        if (!categorySelect) return;
+    
+        try {
+            const categories = await getCategories();
+            categorySelect.innerHTML = "";
+    
+            categories.forEach(category => {
+                const option = document.createElement("option");
+                option.value = category.id;
+                option.textContent = category.name;
+                categorySelect.appendChild(option);
+            });
+        } catch (error) {
+            console.error("Erreur lors du chargement des catégories :", error);
+        }
+    };
+
     const openAddPhotoModal = () => {
-        if (modal) modal.style.display = "none";
-        if (modalAdd) modalAdd.style.display = "block";
+        const modalAdd = document.querySelector("#modalAdd");
+        if (modalAdd) {
+            modalAdd.style.display = "block";
+            categorySelect();
+        }
     };
 
     const backToGalleryModal = () => {
