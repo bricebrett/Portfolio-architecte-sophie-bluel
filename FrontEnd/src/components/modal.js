@@ -76,21 +76,18 @@ export const initializeModal = async () => {
     
             if (!file) return;
     
-            // Vérifie le format du fichier
             if (!allowedFormats.includes(file.type)) {
                 alert("Seuls les fichiers JPG et PNG sont autorisés.");
                 fileInput.value = "";
                 return;
             }
     
-            // Vérifie la taille du fichier
             if (file.size > maxSize) {
                 alert("L'image ne doit pas dépasser 4 Mo.");
                 fileInput.value = "";
                 return;
             }
     
-            // Afficher l’aperçu de l’image
             const reader = new FileReader();
             reader.onload = (e) => {
                 previewImage.src = e.target.result;
