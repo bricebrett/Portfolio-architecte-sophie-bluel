@@ -21,7 +21,7 @@ export const initializeModal = async () => {
     };
 
     const closeModal = (event) => {
-        if (event && event.target === modal || event.target === modalAdd) {
+        if (event && event.target === modal || event && event.target === modalAdd) {
             if (modal) modal.style.display = "none";
             if (modalAdd) modalAdd.style.display = "none";
             overlay.style.display = "none";
@@ -180,7 +180,6 @@ export const initializeModal = async () => {
     const handleDeleteWork = async (workId) => {
         try {
             await deleteWork(workId);
-    
             removeWorkFromDOM(workId);
         } catch (error) {
             console.error("Erreur lors de la suppression :", error);
@@ -301,16 +300,11 @@ export const initializeModal = async () => {
     document.querySelector("#file-upload").addEventListener("change", validateForm);
     document.querySelector("#titleContent").addEventListener("input", validateForm);
     document.querySelector("#categoryContent").addEventListener("change", validateForm);
-    document.querySelector("#submit-photo").addEventListener("click", submitNewWork);
-    document.querySelectorAll(".js-modal-close").forEach(button => {
-        button.addEventListener("click", closeModal);
-    });
+    document.querySelectorAll(".js-modal-close").forEach(button => { button.addEventListener("click", closeModal) });
 
     if (modifyBtn) modifyBtn.addEventListener("click", openModal);
     if (closeModalBtn) closeModalBtn.addEventListener("click", closeModal);
     if (addPhotoBtn) addPhotoBtn.addEventListener("click", openAddPhotoModal);
     if (backBtn) backBtn.addEventListener("click", backToGalleryModal);
-    if (overlay) {
-        overlay.addEventListener("click", closeModal);
-    }
+    if (overlay) overlay.addEventListener("click", closeModal);
 };

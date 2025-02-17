@@ -7,26 +7,6 @@ import { initializeAdminMode } from './services/admin.js';
 import { initializeModal } from './components/modal.js';
 
 /**
- * Function handle events
- */
-const initializeEvents = (works) => {
-    const categoryButtons = document.querySelectorAll(".btn-categorie");
-    categoryButtons.forEach(button => {
-        button.addEventListener("click", () => {
-            const categoryId = button.getAttribute("data-category-id");
-            filterWorksByCategory(works, categoryId);
-        });
-    });
-
-    const allButton = document.querySelector("#btnAll");
-    if (allButton) {
-        allButton.addEventListener("click", () => {
-            addWorks(works);
-        });
-    }
-};
-
-/**
  * Function initialize app
  */
 const initializeApp = async () => {
