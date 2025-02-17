@@ -1,7 +1,6 @@
 import { getWorks, deleteWork, getCategories } from "../services/api.js";
 import { removeWorkFromDOM } from "../components/works.js";
 import { API_ENDPOINTS } from "../services/endpoints.js";
-// import { addWorks } from "../components/works.js";
 
 export const initializeModal = async () => {
     const modifyBtn = document.querySelector("#modify-btn");
@@ -21,13 +20,20 @@ export const initializeModal = async () => {
         }
     };
 
-    const closeModal = () => {
-        if (modal && overlay) {
-            modal.style.display = "none";
+    const closeModal = (event) => {
+        if (event && event.target === modal || event.target === modalAdd) {
+            if (modal) modal.style.display = "none";
+            if (modalAdd) modalAdd.style.display = "none";
             overlay.style.display = "none";
+            clearModalFields();
+            return;
         }
-        if (modalAdd) {
-            modalAdd.style.display = "none";
+    
+        if (event && event.target.classList.contains("js-modal-close")) {
+            if (modal) modal.style.display = "none";
+            if (modalAdd) modalAdd.style.display = "none";
+            overlay.style.display = "none";
+            clearModalFields();
         }
     };
 
@@ -296,9 +302,15 @@ export const initializeModal = async () => {
     document.querySelector("#titleContent").addEventListener("input", validateForm);
     document.querySelector("#categoryContent").addEventListener("change", validateForm);
     document.querySelector("#submit-photo").addEventListener("click", submitNewWork);
+    document.querySelectorAll(".js-modal-close").forEach(button => {
+        button.addEventListener("click", closeModal);
+    });
 
     if (modifyBtn) modifyBtn.addEventListener("click", openModal);
     if (closeModalBtn) closeModalBtn.addEventListener("click", closeModal);
     if (addPhotoBtn) addPhotoBtn.addEventListener("click", openAddPhotoModal);
     if (backBtn) backBtn.addEventListener("click", backToGalleryModal);
+    if (overlay) {
+        overlay.addEventListener("click", closeModal);
+    }
 };

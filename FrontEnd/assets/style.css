@@ -256,8 +256,7 @@ margin: auto;
 	padding: 0px 8px;
 }
 
-.modal-overlay,
-.modalAdd-overlay {
+.modal-overlay {
   	position: fixed;
   	top: 0;
   	left: 0;

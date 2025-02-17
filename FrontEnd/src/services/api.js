@@ -38,7 +38,7 @@ export const deleteWork = async (workId) => {
         const response = await fetch(`${API_ENDPOINTS.WORKS}/${workId}`, {
             method: "DELETE",
             headers: {
-                "Authorization": `Bearer ${token}`, // Vérifier si le token est bien envoyé
+                "Authorization": `Bearer ${token}`,
                 "Content-Type": "application/json"
             }
         });
