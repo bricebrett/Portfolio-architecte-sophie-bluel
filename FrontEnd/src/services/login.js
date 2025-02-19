@@ -1,10 +1,12 @@
 import { loginUser } from "./api.js";
+import { displayErrorMessage } from "../utils/errorUtils.js";
 
 /**
  * Function initialize login
  */
 export const initializeLogin = () => {
     const loginForm = document.querySelector("#login-form");
+    const connectionBtn = document.querySelector("#connection-btn");
     if (loginForm) {
         loginForm.addEventListener("submit", async (event) => {
             event.preventDefault();
@@ -28,10 +30,12 @@ export const initializeLogin = () => {
                 if (existingError) {
                     existingError.remove();
                 }
-                const loginError = document.createElement("div");
-                loginError.classList.add("error");
-                loginError.textContent = "Identifiants incorrects. Veuillez réessayer.";
-                loginForm.appendChild(loginError);
+                // const loginError = document.createElement("div");
+                // loginError.classList.add("error");
+                // loginError.style.color = "red";
+                // loginError.textContent = "Identifiants incorrects. Veuillez réessayer.";
+                // loginForm.appendChild(loginError);
+                displayErrorMessage(connectionBtn, "Identifiants incorrects. Veuillez réessayer.");
             }
         });
     }

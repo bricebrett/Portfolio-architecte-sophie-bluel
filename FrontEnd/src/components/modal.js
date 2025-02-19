@@ -1,6 +1,7 @@
 import { getWorks, deleteWork, getCategories } from "../services/api.js";
 import { removeWorkFromDOM } from "../components/works.js";
 import { API_ENDPOINTS } from "../services/endpoints.js";
+import { displayErrorMessage } from "../utils/errorUtils.js";
 
 export const initializeModal = async () => {
     const modifyBtn = document.querySelector("#modify-btn");
@@ -83,13 +84,13 @@ export const initializeModal = async () => {
             if (!file) return;
     
             if (!allowedFormats.includes(file.type)) {
-                alert("Seuls les fichiers JPG et PNG sont autorisés.");
+                error("Le format de l'image n'est pas valide.");
                 fileInput.value = "";
                 return;
             }
     
             if (file.size > maxSize) {
-                alert("L'image ne doit pas dépasser 4 Mo.");
+                error("L'image ne doit pas dépasser 4 Mo.");
                 fileInput.value = "";
                 return;
             }
@@ -130,6 +131,7 @@ export const initializeModal = async () => {
         document.querySelector("#file-upload").value = ""; 
         document.querySelector("#titleContent").value = ""; 
         document.querySelector("#categoryContent").selectedIndex = 0; 
+        
     
         document.querySelector(".fa-image").style.display = "block";
         document.querySelector(".file-label").style.display = "block";
@@ -138,6 +140,10 @@ export const initializeModal = async () => {
         const existingPreviewImage = document.querySelector(".preview-image");
         if (existingPreviewImage) {
             existingPreviewImage.remove();
+        }
+
+        if (document.querySelector(".error-message")) {
+            document.querySelectorAll(".error-message").forEach(error => error.remove());
         }
     
         const submitButton = document.querySelector("#submit-photo");
@@ -207,10 +213,10 @@ export const initializeModal = async () => {
         const fileInput = document.querySelector("#file-upload");
         const titleInput = document.querySelector("#titleContent");
         const categorySelect = document.querySelector("#categoryContent");
-    
+
+
         if (!fileInput.files[0] || titleInput.value.trim() === "" || categorySelect.value === "") {
-            alert("Veuillez remplir tous les champs.");
-            return;
+            displayErrorMessage(categorySelect, "Tous les champs sont requis.", true);
         }
     
         const formData = new FormData();
@@ -245,7 +251,6 @@ export const initializeModal = async () => {
             clearModalFields();
         } catch (error) {
             console.error("Erreur lors de l'ajout :", error);
-            alert("Une erreur est survenue.");
         }
     };
     
