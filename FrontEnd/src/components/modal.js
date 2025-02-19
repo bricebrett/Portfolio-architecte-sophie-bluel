@@ -207,7 +207,6 @@ export const initializeModal = async () => {
         const fileInput = document.querySelector("#file-upload");
         const titleInput = document.querySelector("#titleContent");
         const categorySelect = document.querySelector("#categoryContent");
-        const submitButton = document.querySelector("#submit-photo");
     
         if (!fileInput.files[0] || titleInput.value.trim() === "" || categorySelect.value === "") {
             alert("Veuillez remplir tous les champs.");
