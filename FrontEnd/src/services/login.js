@@ -30,11 +30,6 @@ export const initializeLogin = () => {
                 if (existingError) {
                     existingError.remove();
                 }
-                // const loginError = document.createElement("div");
-                // loginError.classList.add("error");
-                // loginError.style.color = "red";
-                // loginError.textContent = "Identifiants incorrects. Veuillez réessayer.";
-                // loginForm.appendChild(loginError);
                 displayErrorMessage(connectionBtn, "Identifiants incorrects. Veuillez réessayer.");
             }
         });

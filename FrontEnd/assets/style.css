@@ -303,7 +303,6 @@ margin: auto;
 	padding: 40px 0;
 }
 
-/* Bouton de fermeture */
 .js-modal-close {
     position: absolute;
     top: 30px;
@@ -313,28 +312,24 @@ margin: auto;
 }
 
 
-/* Zone de la galerie photo */
 #modal-gallery {
     display: grid;
-    grid-template-columns: repeat(5, 1fr); /* 5 images par ligne */
+    grid-template-columns: repeat(5, 1fr);
     gap: 20px 8px;
     padding: 20px;
     justify-items: center;
 }
 
-/* Conteneur des images */
 .modal-work-container {
     position: relative;
 }
 
-/* Style des images */
 .modal-image {
     width: 76px;
     height: 102px;
     object-fit: cover;
 }
 
-/* Bouton de suppression (poubelle) */
 .delete-work {
     position: absolute;
     top: 5px;
@@ -353,7 +348,6 @@ margin: auto;
     font-size: 12px;
 }
 
-/* Ligne de séparation avant le bouton "Ajouter une photo" */
 .modal-divider {
     width: 100%;
     height: 1px;
@@ -361,7 +355,6 @@ margin: auto;
     margin: 20px 0;
 }
 
-/* Bouton Ajouter une photo */
 #new-photo {
     background: #1D6154;
     color: white;
@@ -390,7 +383,6 @@ margin: auto;
     cursor: pointer;
 }
 
-/* Zone d'ajout de l'image */
 .upload-zone {
     width: 100%;
     max-width: 420px;
@@ -427,14 +419,12 @@ margin: auto;
     color: #666;
 }
 
-/* Icône de l'image */
 .upload-zone .image-icon {
     font-size: 50px;
     color: #B9C5CC;
 }
 
 
-/* Champs de formulaire */
 #modalAdd label {
     margin: 10px 0 5px;
 }
@@ -458,7 +448,6 @@ margin: auto;
 	height: 50px;
 }
 
-/* Bouton Valider */
 #submit-photo {
     background: #A7A7A7;
     color: white;
@@ -471,7 +460,6 @@ margin: auto;
 	height: 36px;
 }
 
-/* Quand le formulaire est valide */
 #submit-photo.active {
     background: #1D6154;
     cursor: pointer;
