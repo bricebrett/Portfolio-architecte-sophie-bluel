@@ -1,5 +1,5 @@
 /**
- * Function handle admin
+ * Gère le mode admin.
  */
 export const initializeAdminMode = () => {
     const isAdmin = sessionStorage.getItem("admin") === "true";

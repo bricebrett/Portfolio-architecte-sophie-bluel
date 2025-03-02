@@ -1,5 +1,5 @@
 /**
- * Function add categories to HTML
+ * Ajoute les catégoris à l'HTML.
  * */ 
 export const addCategories = (categories) => {
     const categoriesContainer = document.getElementById("categories");

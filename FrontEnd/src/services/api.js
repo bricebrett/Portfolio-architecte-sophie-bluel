@@ -1,5 +1,8 @@
 import { API_ENDPOINTS } from './endpoints.js';
 
+/**
+ * Fonction générique pour effectuer des requêtes API.
+ */
 export const fetchData = async (endpoint, method, data = null) => {
     try {
         const options = {

@@ -2,7 +2,7 @@ import { loginUser } from "./api.js";
 import { displayErrorMessage } from "../utils/errorUtils.js";
 
 /**
- * Function initialize login
+ * Initialise la fonctionnalité de connexion.
  */
 export const initializeLogin = () => {
     const loginForm = document.querySelector("#login-form");

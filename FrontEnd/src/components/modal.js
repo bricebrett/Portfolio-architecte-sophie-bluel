@@ -13,6 +13,7 @@ export const initializeModal = async () => {
     const addPhotoBtn = document.querySelector("#new-photo");
     const backBtn = document.querySelector(".js-modal-back");
 
+    // Ouvre la modal et charge les travaux dans la modal
     const openModal = async () => {
         if (modal && overlay) {
             modal.style.display = "block";
@@ -21,6 +22,7 @@ export const initializeModal = async () => {
         }
     };
 
+    // Ferme la modal et réintialise les champs de la modal
     const closeModal = (event) => {
         if (event && event.target === modal || event && event.target === modalAdd) {
             if (modal) modal.style.display = "none";
@@ -38,6 +40,7 @@ export const initializeModal = async () => {
         }
     };
 
+    // Charge les catégories dans le selecteur de catégories
     const categorySelect = async () => {
         const categorySelect = document.querySelector("#categoryContent");
     
@@ -58,6 +61,7 @@ export const initializeModal = async () => {
         }
     };
 
+    // Prévisualise l'image sélectionnée pour l'upload
     const previewSelectedImage = () => {
         const fileInput = document.querySelector("#file-upload");
         const uploadZone = document.querySelector(".upload-zone");
@@ -108,6 +112,7 @@ export const initializeModal = async () => {
         });
     };
 
+    // Ouvre la modal d'ajout de photo
     const openAddPhotoModal = () => {
         const modalAdd = document.querySelector("#modalAdd");
         if (modalAdd) {
@@ -117,6 +122,7 @@ export const initializeModal = async () => {
         }
     };
 
+    // Retourne à la modal de galerie depuis la modal d'ajout de photo
     const backToGalleryModal = () => {
         const modalAdd = document.querySelector("#modalAdd");
         const modal = document.querySelector("#modal");
@@ -127,6 +133,7 @@ export const initializeModal = async () => {
         clearModalFields();
     };
 
+    // Réinitialise les champs de la modal
     const clearModalFields = () => {
         document.querySelector("#file-upload").value = ""; 
         document.querySelector("#titleContent").value = ""; 
@@ -151,6 +158,7 @@ export const initializeModal = async () => {
         submitButton.style.backgroundColor = "#A7A7A7";
     };
 
+    // Charge les travaux dans la modal
     const loadWorksInModal = async () => {
         modalGallery.innerHTML = "";
         try {
@@ -183,6 +191,7 @@ export const initializeModal = async () => {
         }
     };
 
+    // Gère la suppression d'un travail
     const handleDeleteWork = async (workId) => {
         try {
             await deleteWork(workId);
@@ -192,6 +201,7 @@ export const initializeModal = async () => {
         }
     };
 
+    // Valide le formulaire d'ajout de travail
     const validateForm = () => {
         const fileInput = document.querySelector("#file-upload");
         const titleInput = document.querySelector("#titleContent");
@@ -206,7 +216,7 @@ export const initializeModal = async () => {
             submitButton.style.backgroundColor = "#A7A7A7";
         }
     };
-
+    // Soumet un nouveau travail
     const submitNewWork = async (event) => {
         event.preventDefault();
     
@@ -253,12 +263,14 @@ export const initializeModal = async () => {
             console.error("Erreur lors de l'ajout :", error);
         }
     };
-    
-    document.querySelector("#submit-photo").addEventListener("click", (event) => {
+
+    if(document.querySelector("#submit-photo").addEventListener("click", (event) => {
         event.preventDefault();
         submitNewWork(event);
-    });
+    })
+);
 
+    // Ajoute un travail au DOM
     const addNewWorkToDOM = (work) => {
         const worksContainer = document.querySelector('#gallery');
     
@@ -312,3 +324,7 @@ export const initializeModal = async () => {
     if (backBtn) backBtn.addEventListener("click", backToGalleryModal);
     if (overlay) overlay.addEventListener("click", closeModal);
 };
+
+document.addEventListener("DOMContentLoaded", () => {
+    
+});

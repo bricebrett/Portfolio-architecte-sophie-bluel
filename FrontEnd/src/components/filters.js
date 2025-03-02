@@ -1,9 +1,15 @@
 import { addWorks } from './works.js';
 
+/**
+ * Filtre les travaux par catégorie.
+ */
 export const filterWorksByCategory = (works, categoryId) => {
     return works.filter(work => work.categoryId == categoryId);
 };
 
+/**
+ * Initialise les filtres en ajoutant des écouteurs d'événements aux boutons de catégorie et au bouton "Tous".
+ */
 export const initializeFilters = (works) => {
     document.querySelectorAll('.btn-categorie').forEach(button => {
         button.addEventListener('click', (event) => {

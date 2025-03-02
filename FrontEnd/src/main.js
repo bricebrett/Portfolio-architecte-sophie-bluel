@@ -7,7 +7,7 @@ import { initializeAdminMode } from './services/admin.js';
 import { initializeModal } from './components/modal.js';
 
 /**
- * Function initialize app
+ * Fonction pour initialiser l'application.
  */
 const initializeApp = async () => {
     try {
@@ -35,5 +35,8 @@ const initializeApp = async () => {
 
 document.addEventListener("DOMContentLoaded", () => {
     initializeApp();
-    initializeModal();
+    const token = localStorage.getItem("authToken");
+    if (token) {
+        initializeModal();
+    }
 });

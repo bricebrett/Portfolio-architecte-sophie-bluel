@@ -1,5 +1,5 @@
 /**
- * Function add works to HTML
+ * Ajoute les travaux à l'HTML.
  */
 export const addWorks = (works) => {
     const worksContainer = document.querySelector('#gallery');
@@ -19,6 +19,9 @@ export const addWorks = (works) => {
     });
 }
 
+/**
+ * Supprime un travail du DOM.
+ */
 export const removeWorkFromDOM = (workId) => {
     const workElement = document.querySelector(`#gallery [data-id="${workId}"]`);
     if (workElement) {
